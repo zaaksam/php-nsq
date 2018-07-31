@@ -94,7 +94,7 @@ void ConnectionCloseCallback(struct evhttp_connection *connection, void *arg) {
 
 char *lookup(char *host, char *topic) {
     char *url = emalloc(sizeof(host) + sizeof(topic) + 25);
-    if (strstr(url, "http://")) {
+    if (strstr(url, "http://") || strstr(url, "https://") {
         sprintf(url, "%s%s%s", host, "/lookup?topic=", topic);
     } else {
         sprintf(url, "%s%s%s%s", "http://", host, "/lookup?topic=", topic);
